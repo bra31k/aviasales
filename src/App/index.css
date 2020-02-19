@@ -1,0 +1,17 @@
+.content {
+    display: flex;
+}
+
+.content:last-child {
+    margin-right: 0;
+}
+
+.block {
+    margin: 10px;
+}
+
+@media screen and (max-width: 830px){
+    .content {
+        display: block
+    }
+}

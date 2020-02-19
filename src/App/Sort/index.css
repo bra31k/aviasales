@@ -1,0 +1,76 @@
+.radio-sort {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    border: 1px solid #DFE5EC;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.radio-sort__label {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    min-width: 261px;
+    padding: 15px 0;
+
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-sort__item:checked,
+.radio-sort__item:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+.radio-sort__item:not(:checked) + .radio-sort__label {
+    background-color: #FFFFFF;
+    color: inherit;
+
+    border-radius: 5px;
+}
+
+.radio-sort__item:checked + .radio-sort__label {
+    background-color: #2196F3;
+    color: #FFFFFF;
+
+    border-radius: 5px;
+}
+
+.radio-sort-container:first-child .radio-sort__item + .radio-sort__label {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.radio-sort-container:last-child .radio-sort__item + .radio-sort__label {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+@media screen and (max-width: 830px){
+    .radio-sort {
+        display: block;
+    }
+
+    .radio-sort-container:first-child .radio-sort__item + .radio-sort__label {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .radio-sort-container:last-child .radio-sort__item + .radio-sort__label {
+        border-radius: 0 0 5px 5px;
+    }
+
+    .radio-sort__label {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+

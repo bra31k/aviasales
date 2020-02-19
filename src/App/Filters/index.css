@@ -1,0 +1,35 @@
+.filters {
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+    width: 100%;
+    padding: 20px 0;
+}
+
+.filters-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    padding-left: 20px;
+    margin-bottom: 10px;
+    padding-right: 20px;
+}
+
+.filters > *:last-child {
+    margin-bottom: 0;
+}
+
+.filters-content__item {
+    padding: 10px 20px;
+    min-width: 200px;
+}
+
+.filters-content__item:hover {
+    background-color: #F1FCFF;
+}
