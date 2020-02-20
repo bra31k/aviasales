@@ -2,7 +2,7 @@ import {ITicket} from "../Tickets/Ticket";
 
 let searchId: string;
 
-const getSearchId = async () => {
+export const getSearchId = async () => {
     try {
         const response = await fetch(`https://front-test.beta.aviasales.ru/search`);
 
@@ -14,7 +14,7 @@ const getSearchId = async () => {
     }
 };
 
-const getTicketsPack = async (searchId?: string) => {
+export const getTicketsPack = async (searchId?: string) => {
     try {
         const response = await fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`);
 

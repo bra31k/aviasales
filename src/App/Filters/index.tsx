@@ -1,16 +1,16 @@
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
 
 import Checkbox from "./Checkbox";
 
-import "./index.css"
+import "./index.css";
 
 interface IFilters {
-    setFilter: Function;
+    setFilter: Dispatch<SetStateAction<number[]>>;
     filters: Array<number>;
 }
 
 const Filters = ({setFilter, filters}: IFilters) => {
-    const onChangeFilter = (changedFilers: Array<string>, checked: boolean) => {
+    const onChangeFilter = (changedFilers: Array<string>, checked: boolean): void => {
         const filtersToInt = changedFilers.map((filter) => +filter);
 
         if (checked) {

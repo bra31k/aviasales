@@ -1,10 +1,10 @@
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
 
 import "./index.css";
 
 interface ISort {
-    sort: 'price' | 'duration' | null,
-    setSort: Function,
+    sort: 'price' | 'duration',
+    setSort: Dispatch<SetStateAction<'price' | 'duration'>>,
 }
 
 const Sort = ({sort, setSort}: ISort) => {
@@ -18,7 +18,7 @@ const Sort = ({sort, setSort}: ISort) => {
                     className="radio-sort__item"
                     value="price"
                     checked={sort === `price`}
-                    onChange={(event) => setSort(event.target.value)}
+                    onChange={() => setSort(`price`)}
                 />
                 <label htmlFor="cheap" className="radio-sort__label">
                     Самый дешевый
@@ -33,7 +33,7 @@ const Sort = ({sort, setSort}: ISort) => {
                     className="radio-sort__item"
                     value="duration"
                     checked={sort === `duration`}
-                    onChange={(event) => setSort(event.target.value)}
+                    onChange={() => setSort(`duration`)}
                 />
                 <label htmlFor="quick" className="radio-sort__label">
                     Самый быстрый

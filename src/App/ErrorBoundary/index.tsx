@@ -15,11 +15,15 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
     constructor(props: IErrorBoundaryProps) {
         super(props);
 
-        this.state = {hasError: false};
+        this.state = {
+            hasError: false
+        };
     }
 
     static getDerivedStateFromError() {
-        return {hasError: true};
+        return {
+            hasError: true
+        };
     }
 
     componentDidUpdate(prevProps: Readonly<IErrorBoundaryProps>, prevState: Readonly<IErrorBoundaryState>): void {
@@ -29,8 +33,9 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
     }
 
     render() {
+        const {children, tryMore} = this.props;
+
         if (this.state.hasError) {
-            // Можно отрендерить запасной UI произвольного вида
             return (
                 <div className="error">
                     <div className="error-text">
@@ -39,7 +44,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
                     <button
                         type="button"
                         className="button-error"
-                        onClick={this.props.tryMore}
+                        onClick={tryMore}
                     >
                         ПОПРОБОВАТЬ СНОВА
                     </button>
@@ -47,7 +52,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
             );
         }
 
-        return this.props.children;
+        return children;
     }
 }
 

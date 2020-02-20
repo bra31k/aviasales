@@ -22,7 +22,7 @@ export interface ITicket {
     segments: Array<ISegment>
 }
 
-const Ticket = ({price, carrier, segments}: ITicket) => {
+const Ticket = ({price, carrier, segments}: ITicket)=> {
     return (
         <div className="ticket">
             <div className="ticket-head">
@@ -57,14 +57,14 @@ const Ticket = ({price, carrier, segments}: ITicket) => {
                         </div>
                         <div className="ticket-content__item">
                             {!!segment.stops.length && (
-                                <>
+                                <React.Fragment>
                                     <div className="ticket-item__title">
                                         {segment.stops.length} {chooseDeclension(segment.stops.length)}
                                     </div>
                                     <div className="ticket-item__value">
                                         {segment.stops.join(`, `)}
                                     </div>
-                                </>
+                                </React.Fragment>
                             )}
                         </div>
                     </React.Fragment>

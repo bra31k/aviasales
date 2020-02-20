@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from "react";
 
-import Api from "./Api/api";
+import Api from "./Api/";
 import Header from "./Header"
 import Filters from "./Filters";
 import Sort from "./Sort";
 import Tickets from "./Tickets";
 import ErrorBoundary from "./ErrorBoundary";
+import {applySort} from "./applySort";
+import {applyFilters} from "./applyFilters";
 import {ITicket} from "./Tickets/Ticket";
 
 import "./index.css";
+
+export type sortType = `price` | `duration`;
 
 const App: React.FC = () => {
     const [isLoading, setLoadStatus] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [tickets, setTickets] = useState<Array<ITicket>>([]);
     const [filters, setFilter] = useState<Array<number>>([]);
-    const [sort, setSort] = useState<'price' | 'duration'>(`price`);
+    const [sort, setSort] = useState<sortType>(`price`);
 
     const getTickets = async () => {
         setLoadStatus(true);
@@ -36,33 +40,8 @@ const App: React.FC = () => {
         getTickets();
     }, []);
 
-    let sortedAndFilteredTickets = tickets;
-
-    if (filters.length) {
-        sortedAndFilteredTickets =
-            tickets
-                .filter((ticket: ITicket) =>
-                    ticket.segments.every((segment) =>
-                        filters.includes(segment.stops.length)
-                    )
-                );
-    }
-
-    if (sort === `price`) {
-        sortedAndFilteredTickets
-            .sort((a, b) => a.price > b.price ? 1 : -1);
-    } else if (sort === `duration`) {
-        sortedAndFilteredTickets
-            .sort((first, second) => {
-                const [firstDuration, secondDuration] =
-                    [first, second]
-                        .map((item) => item.segments
-                            .reduce((sum, segment) => sum += segment.duration, 0)
-                        );
-
-                return firstDuration > secondDuration ? 1 : -1
-            });
-    }
+    const filteredTickets = applyFilters(filters, tickets);
+    const filteredAndSortedTickets = applySort(sort, filteredTickets);
 
     return (
         <div className="app">
@@ -83,7 +62,7 @@ const App: React.FC = () => {
                         error={!!error}
                         tryMore={getTickets}
                     >
-                        <Tickets tickets={sortedAndFilteredTickets}/>
+                        <Tickets tickets={filteredAndSortedTickets}/>
                     </ErrorBoundary>
                 </div>
             </div>
