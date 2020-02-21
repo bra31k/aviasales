@@ -17,7 +17,7 @@ afterEach(() => {
     container.remove();
 });
 
-it("sort changes value when clicked", () => {
+it("sort", () => {
     const setSort = jest.fn();
     const sort: sortType = `duration`;
 

@@ -16,7 +16,7 @@ afterEach(() => {
     container.remove();
 });
 
-it("sort changes value when clicked", () => {
+it("checkbox", () => {
     const onChange = jest.fn();
 
     act(() => {
