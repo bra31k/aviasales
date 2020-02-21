@@ -20,7 +20,10 @@ const Sort = ({sort, setSort}: ISort) => {
                     checked={sort === `price`}
                     onChange={() => setSort(`price`)}
                 />
-                <label htmlFor="cheap" className="radio-sort__label">
+                <label
+                    htmlFor="cheap"
+                    className="radio-sort__label"
+                >
                     Самый дешевый
                 </label>
             </div>
@@ -35,7 +38,10 @@ const Sort = ({sort, setSort}: ISort) => {
                     checked={sort === `duration`}
                     onChange={() => setSort(`duration`)}
                 />
-                <label htmlFor="quick" className="radio-sort__label">
+                <label
+                    htmlFor="quick"
+                    className="radio-sort__label"
+                >
                     Самый быстрый
                 </label>
             </div>

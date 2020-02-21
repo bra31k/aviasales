@@ -6,7 +6,7 @@ interface ICheckbox {
     label?: string;
     name: string;
     value?: string | Array<string>;
-    checked: boolean | undefined;
+    checked?: boolean;
     onChange: Function;
 }
 
@@ -17,6 +17,7 @@ const Checkbox = ({label, checked, name, onChange, value}: ICheckbox) => {
         <div className="filters-content__item">
             <input
                 id={`id-${name}`}
+                name={name}
                 type="checkbox"
                 value={value}
                 checked={checked}
