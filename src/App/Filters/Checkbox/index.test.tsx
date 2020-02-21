@@ -33,18 +33,18 @@ it("sort changes value when clicked", () => {
 
     const checkbox: HTMLInputElement | null = document.querySelector(`[id=id-checkbox]`);
 
-    if (!checkbox) {
-        return;
-    }
+    expect(checkbox?.value).toBe(`value`);
+    expect(checkbox?.name).toBe(`checkbox`);
+    expect(checkbox?.checked).toBe(false);
 
-    expect(checkbox.value).toBe(`value`);
-    expect(checkbox.name).toBe(`checkbox`);
-    expect(checkbox.checked).toBe(false);
+    const label: HTMLLabelElement | null = document.querySelector(`label`);
+
+    expect(label?.innerHTML).toBe(`Checkbox`);
 
     act(() => {
-        checkbox.dispatchEvent(new MouseEvent(`click`, {bubbles: true}));
+        checkbox?.dispatchEvent(new MouseEvent(`click`, {bubbles: true}));
     });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(checkbox.checked).toBe(true);
+    expect(checkbox?.checked).toBe(true);
 });

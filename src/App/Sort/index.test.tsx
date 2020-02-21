@@ -34,18 +34,14 @@ it("sort changes value when clicked", () => {
     const quickRadioButton: Element | null = document.querySelector(`[id=quick]`);
     const cheapRadioButton: Element | null = document.querySelector(`[id=cheap]`);
 
-    if (!quickRadioButton || !cheapRadioButton) {
-        return;
-    }
-
     act(() => {
-        quickRadioButton.dispatchEvent(new MouseEvent(`click`, {bubbles: true}));
+        quickRadioButton?.dispatchEvent(new MouseEvent(`click`, {bubbles: true}));
     });
 
     expect(setSort).toHaveBeenCalledTimes(0);
 
     act(() => {
-        cheapRadioButton.dispatchEvent(new MouseEvent(`click`, {bubbles: true}));
+        cheapRadioButton?.dispatchEvent(new MouseEvent(`click`, {bubbles: true}));
     });
 
     expect(setSort).toHaveBeenCalledTimes(1);
